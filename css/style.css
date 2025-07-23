@@ -1,0 +1,405 @@
+:root {
+  --primary: #6d7cff;
+  --primary-dark: #4e5ad7;
+  --dark-bg: #13192b;
+  --card-bg: #1a2038;
+  --content-bg: #23283b;
+  --element-bg: #2c344a;
+  --text-primary: #d1d5e8;
+  --text-secondary: #bfc8e6;
+  --accent: #ff7eb9;
+  --success: #6dffc1;
+  --warning: #ffd166;
+  --danger: #ff6b6b;
+  --border-radius: 16px;
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: var(--dark-bg);
+  min-height: 100vh;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: radial-gradient(
+      circle at 10% 20%,
+      rgba(109, 124, 255, 0.1) 0%,
+      transparent 20%
+    ),
+    radial-gradient(
+      circle at 90% 80%,
+      rgba(255, 126, 185, 0.1) 0%,
+      transparent 20%
+    );
+}
+
+.container {
+  max-width: 800px;
+  width: 100%;
+  margin: 20px auto;
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+}
+
+h1 {
+  text-align: center;
+  color: var(--text-primary);
+  font-weight: 700;
+  margin-bottom: 32px;
+  font-size: 2.5rem;
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0 20px;
+}
+
+h1::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  border-radius: 4px;
+}
+
+.input-row {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.input-row input[type="text"],
+.input-row input[type="date"] {
+  flex: 1;
+  padding: 15px 20px;
+  border-radius: 12px;
+  border: none;
+  background: var(--element-bg);
+  color: var(--text-primary);
+  font-size: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: var(--transition);
+}
+
+.input-row input[type="text"]:focus,
+.input-row input[type="date"]:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(109, 124, 255, 0.2);
+}
+
+.input-row input[type="text"]::placeholder,
+.input-row input[type="date"]::placeholder {
+  color: rgba(191, 200, 230, 0.5);
+}
+
+.input-row button {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 0 25px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(109, 124, 255, 0.3);
+}
+
+.input-row button:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(109, 124, 255, 0.4);
+}
+
+.actions-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+  gap: 15px;
+}
+
+.actions-row button {
+  background: var(--element-bg);
+  color: var(--text-primary);
+  border: none;
+  border-radius: 12px;
+  padding: 14px 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.actions-row button:hover {
+  background: rgba(109, 124, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.actions-row .delete-all {
+  background: var(--danger);
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+}
+
+.actions-row .delete-all:hover {
+  background: #ff5252;
+  box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+}
+
+.todo-table {
+  width: 100%;
+  background: var(--content-bg);
+  border-radius: 12px;
+  color: var(--text-primary);
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  margin-top: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.todo-table th {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  font-weight: 600;
+  background: rgba(44, 52, 74, 0.7);
+  padding: 18px 16px;
+  text-align: left;
+  position: sticky;
+  top: 0;
+}
+
+.todo-table th:first-child {
+  padding-left: 25px;
+}
+
+.todo-table th:last-child {
+  padding-right: 25px;
+}
+
+.todo-table td {
+  padding: 16px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.todo-table td:first-child {
+  padding-left: 25px;
+}
+
+.todo-table td:last-child {
+  padding-right: 25px;
+}
+
+.todo-table tr:last-child td {
+  border-bottom: none;
+}
+
+.todo-table tr {
+  transition: var(--transition);
+}
+
+.todo-table tr:hover {
+  background: rgba(109, 124, 255, 0.05);
+}
+
+
+.todo-table .no-task {
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+  padding: 40px 0;
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+}
+
+.no-task i {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 15px;
+  color: rgba(191, 200, 230, 0.3);
+}
+
+.task-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.checkbox-container {
+  position: relative;
+}
+
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  display: block;
+  width: 22px;
+  height: 22px;
+  background: var(--element-bg);
+  border: 2px solid var(--text-secondary);
+  border-radius: 6px;
+  transition: var(--transition);
+}
+
+.checkbox-container input:checked ~ .checkmark {
+  background: var(--success);
+  border-color: var(--success);
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 7px;
+  top: 3px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.status-cell {
+  display: flex;
+}
+
+.status-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.status-badge.pending {
+  background: rgba(255, 209, 102, 0.15);
+  color: var(--warning);
+}
+
+.status-badge.completed {
+  background: rgba(109, 255, 193, 0.15);
+  color: var(--success);
+}
+
+.actions-cell {
+  display: flex;
+  gap: 10px;
+}
+
+.action-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+  border: none;
+  color: white;
+  font-size: 1rem;
+}
+
+.action-btn.edit {
+  background: rgba(109, 124, 255, 0.15);
+  color: var(--primary);
+}
+
+.action-btn.edit:hover {
+  background: var(--primary);
+  color: white;
+}
+
+.action-btn.delete {
+  background: rgba(255, 107, 107, 0.15);
+  color: var(--danger);
+}
+
+.action-btn.delete:hover {
+  background: var(--danger);
+  color: white;
+}
+
+.due-date {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-secondary);
+}
+
+.due-date i {
+  color: var(--accent);
+}
+
+.urgent {
+  color: var(--danger) !important;
+  font-weight: 600;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .container {
+    padding: 25px 20px;
+  }
+
+  .input-row {
+    flex-direction: column;
+  }
+
+  .actions-row {
+    flex-wrap: wrap;
+  }
+
+  .actions-row button {
+    flex: 1;
+  }
+
+  .todo-table {
+    display: block;
+    overflow-x: auto;
+  }
+}
