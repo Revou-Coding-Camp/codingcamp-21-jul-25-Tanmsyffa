@@ -1,39 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Todo List</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
     <div class="container">
-        <h1>Todo List</h1>
-        <div class="input-row">
-            <input type="text" id="todoInput" placeholder="Add a todo..." required>
-            <input type="date" id="dueDateInput" placeholder="mm/dd/yyyy">
-            <button id="addTodoButton">+</button>
-        </div>
-        <div class="actions-row">
-            <button id="buttonFilter">FILTER</button>
-            <button class="delete-all">DELETE ALL</button>
-        </div>
-        <table class="todo-table">
-            <thead>
-                <tr>
-                    <th>TASK</th>
-                    <th>DUE DATE</th>
-                    <th>STATUS</th>
-                    <th>ACTIONS</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="no-task" colspan="5">No task found</td>
-                </tr>
-            </tbody>
-        </table>
+      <h1>Todo List</h1>
+
+      <!-- Input Bar -->
+      <div class="input-row">
+        <input
+          type="text"
+          id="todoInput"
+          placeholder="Add a todo..."
+          required
+        />
+        <input type="date" id="dueDateInput" />
+        <button id="addTodoButton">+</button>
+
+        <!-- Tombol-tombol saat edit -->
+        <button id="editTodoButton" style="display: none">Confirm</button>
+        <button id="cancelEditButton" style="display: none">Cancel</button>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="actions-row">
+        <button id="buttonFilter">Filter</button>
+        <button class="delete-all">Delete All</button>
+      </div>
+
+      <!-- Todo Table -->
+      <table class="todo-table">
+        <thead>
+          <tr>
+            <th>Task</th>
+            <th>Due Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="todoListBody">
+          <tr>
+            <td class="no-task" colspan="4">No task found</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+
     <script src="js/script.js"></script>
-</body>
+  </body>
 </html>
